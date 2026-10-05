@@ -283,7 +283,73 @@ print(m.model_dump())
 
 ```
 
-Self-referencing models are supported. For more details, see the documentation related to [forward annotations](../forward_annotations/#self-referencing-or-recursive-models).
+### Cyclic references
+
+When working with self-referencing recursive models, it is possible that you might encounter cyclic references in validation inputs. For example, this can happen when validating ORM instances with back-references from attributes.
+
+Rather than raising a RecursionError while attempting to validate data with cyclic references, Pydantic is able to detect the cyclic reference and raise an appropriate ValidationError:
+
+```python
+from pydantic import BaseModel, ValidationError
+
+
+class ModelA(BaseModel):
+    b: 'ModelB | None' = None  # (1)!
+
+
+class ModelB(BaseModel):
+    a: ModelA | None = None
+
+
+cyclic_data = {}
+cyclic_data['a'] = {'b': cyclic_data}
+print(cyclic_data)
+#> {'a': {'b': {...}}}
+
+try:
+    ModelB.model_validate(cyclic_data)
+except ValidationError as exc:
+    print(exc)
+    """
+    1 validation error for ModelB
+    a.b
+      Recursion error - cyclic reference detected [type=recursion_loop, input_value={'a': {'b': {...}}}, input_type=dict]
+    """
+
+```
+
+1. As `ModelB` is not yet defined, a [forward annotation](../forward_annotations/) needs to be used.
+
+```python
+from pydantic import BaseModel, ValidationError
+
+
+class ModelA(BaseModel):
+    b: ModelB | None = None
+
+
+class ModelB(BaseModel):
+    a: ModelA | None = None
+
+
+cyclic_data = {}
+cyclic_data['a'] = {'b': cyclic_data}
+print(cyclic_data)
+#> {'a': {'b': {...}}}
+
+try:
+    ModelB.model_validate(cyclic_data)
+except ValidationError as exc:
+    print(exc)
+    """
+    1 validation error for ModelB
+    a.b
+      Recursion error - cyclic reference detected [type=recursion_loop, input_value={'a': {'b': {...}}}, input_type=dict]
+    """
+
+```
+
+See also: the [cyclic references example](../../examples/cyclic_references/), showing how to handle such cyclic references during validation and serialization, and the [cyclic imports](../forward_annotations/#cyclic-imports) section, for models referencing each other from separate modules.
 
 ## Rebuilding model schema
 
@@ -599,7 +665,7 @@ API Documentation
 
 pydantic.main.BaseModel.model_copy
 
-The model_copy() method allows models to be duplicated (with optional updates), which is particularly useful when working with frozen models.
+The model_copy() method allows models to be duplicated (with optional updates that *aren't* validated), which is particularly useful when working with frozen models.
 
 ```python
 from pydantic import BaseModel
@@ -1313,42 +1379,55 @@ print(BarModel.model_fields.keys())
 
 ```
 
-You can also add validators by passing a dictionary to the `__validators__` argument.
+Attributes such as [validators](../validators/), methods or [computed fields](../fields/#the-computed_field-decorator) can be added to the class namespace using the `__namespace__` argument:
 
 ```python
-from pydantic import ValidationError, create_model, field_validator
+from pydantic import (
+    ValidationError,
+    computed_field,
+    create_model,
+    field_validator,
+)
 
 
-def alphanum(cls, v):
+def alphanum(cls, v: str) -> str:
     assert v.isalnum(), 'must be alphanumeric'
     return v
 
 
-validators = {
-    'username_validator': field_validator('username')(alphanum)  # (1)!
-}
+def full_name(self) -> str:
+    return f'{self.first_name} {self.last_name}'
+
 
 UserModel = create_model(
-    'UserModel', username=(str, ...), __validators__=validators
+    'UserModel',
+    first_name=str,
+    last_name=str,
+    __namespace__={  # (1)!
+        'check_alphanum': field_validator('first_name', 'last_name')(alphanum),
+        'full_name': computed_field(property(full_name)),
+    },
 )
 
-user = UserModel(username='scolvin')
-print(user)
-#> username='scolvin'
+user = UserModel(first_name='John', last_name='Doe')
+print(user.model_dump())
+#> {'first_name': 'John', 'last_name': 'Doe', 'full_name': 'John Doe'}
 
 try:
-    UserModel(username='scolvi%n')
+    UserModel(first_name='J%hn', last_name='Doe')
 except ValidationError as e:
     print(e)
     """
     1 validation error for UserModel
-    username
-      Assertion failed, must be alphanumeric [type=assertion_error, input_value='scolvi%n', input_type=str]
+    first_name
+      Assertion failed, must be alphanumeric [type=assertion_error, input_value='J%hn', input_type=str]
     """
 
 ```
 
-1. Make sure that the validators names do not clash with any of the field names as internally, Pydantic gathers all members into a namespace and mimics the normal creation of a class using the [`types` module utilities](https://docs.python.org/3/library/types.html#dynamic-type-creation).
+1. The keys of the namespace must not clash with any of the field names as internally, Pydantic gathers all members into a namespace and mimics the normal creation of a class using the [`types` module utilities](https://docs.python.org/3/library/types.html#dynamic-type-creation).
+
+Added in v2.14: The `__namespace__` argument. Unlike `__validators__`, it isn't restricted to validators and can be used to provide any attribute to the class namespace (such as computed fields, properties or methods). It is now recommended to use `__namespace__` instead of `__validators__`, which will be deprecated in v3.
 
 Note
 
@@ -1702,4 +1781,4 @@ print(f'{id(c1.arr) == id(c2.arr)=}')
 
 Note
 
-There are some situations where Pydantic does not copy attributes, such as when passing models — we use the model as is. You can override this behaviour by setting [`model_config['revalidate_instances'] = 'always'`](../../api/config/#pydantic.config.ConfigDict).
+There are some situations where Pydantic does not copy attributes, such as when passing models — we use the model as is. You can override this behaviour by setting [`model_config['revalidate_instances'] = 'always'`](../../api/config/#pydantic.config.ConfigDict.revalidate_instances).

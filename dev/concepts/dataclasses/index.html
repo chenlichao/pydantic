@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Dataclasses - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/dataclasses.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/concepts/dataclasses/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Dataclasses - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/dataclasses.png" />
-</head>
+  </head>
   
   
     
@@ -631,6 +618,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -3115,6 +3130,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4149,7 +4192,7 @@ They provide a similar functionality to stdlib dataclasses with the addition of 
 <span class="c1">#&gt; Foo(f=&#39;not_an_int&#39;)</span>
 </code></pre></div>
 <ol>
-<li>Unlike <a href="../models/#generic-models">generic Pydantic models</a>, <code>Foo[int]</code> is a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#types-genericalias">generic alias</a> and not a proper type object.
+<li>Unlike <a href="../models/#generic-models">generic Pydantic models</a>, <code>Foo[int]</code> is a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#types-genericalias">generic alias</a> and not a proper type object.
    As such, Pydantic currently treats <code>Foo[int]</code> the same as <code>Foo[Any]</code>,
    without performing validation for <code>f</code>.</li>
 </ol>
@@ -4167,7 +4210,7 @@ They provide a similar functionality to stdlib dataclasses with the addition of 
 <span class="c1">#&gt; Foo(f=&#39;not_an_int&#39;)</span>
 </code></pre></div>
 <ol>
-<li>Unlike <a href="../models/#generic-models">generic Pydantic models</a>, <code>Foo[int]</code> is a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#types-genericalias">generic alias</a> and not a proper type object.
+<li>Unlike <a href="../models/#generic-models">generic Pydantic models</a>, <code>Foo[int]</code> is a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#types-genericalias">generic alias</a> and not a proper type object.
    As such, Pydantic currently performs no validation.</li>
 </ol>
 </div>
@@ -4556,7 +4599,7 @@ be called between the calls to <em>before</em> and <em>after</em> model validato
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -4608,7 +4651,7 @@ be called between the calls to <em>before</em> and <em>after</em> model validato
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

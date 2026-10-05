@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Settings Management - Pydantic Validation" />
-<meta property="og:description" content="Support for loading a settings or config class from environment variables or secrets files." />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/pydantic_settings.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/concepts/pydantic_settings/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Settings Management - Pydantic Validation" />
-<meta property="twitter:description" content="Support for loading a settings or config class from environment variables or secrets files." />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/pydantic_settings.png" />
-</head>
+  </head>
   
   
     
@@ -631,6 +618,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -1410,6 +1425,28 @@ to help you monitor and understand your
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#unknown-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknown environment variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-prefix-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variable prefix targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#case-sensitivity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1545,6 +1582,17 @@ to help you monitor and understand your
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variadic-named-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variadic named options
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3956,6 +4004,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4826,6 +4902,28 @@ to help you monitor and understand your
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#unknown-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknown environment variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-prefix-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment variable prefix targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#case-sensitivity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4961,6 +5059,17 @@ to help you monitor and understand your
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variadic-named-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variadic named options
+      
+    </span>
+  </a>
   
 </li>
         
@@ -5973,6 +6082,70 @@ and lets you opt each nesting level into both spellings independently:</p>
 <span class="k">del</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SUB_VAR1&#39;</span><span class="p">]</span>
 </code></pre></div>
 </div>
+<h3 id="unknown-environment-variables">Unknown environment variables<a class="headerlink" href="#unknown-environment-variables" title="Permanent link">&para;</a></h3>
+<p>Environment variables that do not match a settings field or its alias are ignored, even if they start
+with <code>env_prefix</code> and <code>extra='forbid'</code> is set. The <code>extra</code> setting validates inputs passed to the model;
+it does not check every name in <code>os.environ</code>. A misspelled field name can therefore leave a default
+value in use without raising an error:</p>
+<div class="language-py highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span><span class="n">env_prefix</span><span class="o">=</span><span class="s1">&#39;APP_&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">)</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_PRT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;6543&#39;</span>  <span class="c1"># (1)!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="c1">#&gt; 5432</span>
+<span class="k">del</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_PRT&#39;</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>Misspelled, so it matches no field and is dropped before validation runs.</li>
+</ol>
+<p>The same applies to nested models: an incorrect <code>env_nested_delimiter</code> keeps the variable from matching
+a field. Once a variable <em>does</em> match a known field's nested prefix, however, its contents are passed to
+that field for validation, so an unknown key inside a nested model can raise a <code>ValidationError</code> if that
+nested model has <code>extra='forbid'</code>:</p>
+<div class="language-py highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Database</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">)</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5432</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span>
+        <span class="n">env_prefix</span><span class="o">=</span><span class="s1">&#39;APP_&#39;</span><span class="p">,</span> <span class="n">env_nested_delimiter</span><span class="o">=</span><span class="s1">&#39;__&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span>
+    <span class="p">)</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">Database</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
+
+
+<span class="c1"># A single underscore does not match the database field&#39;s nested prefix.</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_DATABASE_PORT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;6543&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="c1">#&gt; 5432</span>
+<span class="k">del</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_DATABASE_PORT&#39;</span><span class="p">]</span>
+
+<span class="c1"># The nested prefix matches, so the unknown key reaches Database&#39;s validation.</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_DATABASE__PRT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;6543&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Settings</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+    <span class="c1">#&gt; extra_forbidden</span>
+<span class="k">del</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;APP_DATABASE__PRT&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>For extra variables loaded from <code>.env</code> files and the effect of <code>dotenv_filtering</code>, see
+<a href="#dotenv-env-support">Dotenv (.env) support</a>.</p>
+<h3 id="environment-variable-prefix-targets">Environment variable prefix targets<a class="headerlink" href="#environment-variable-prefix-targets" title="Permanent link">&para;</a></h3>
 <p>To apply <code>env_prefix</code> not only to variable names but also to aliases, set <code>env_prefix_target='all'</code>.
 To apply <code>env_prefix</code> only to aliases and not to variable names, set <code>env_prefix_target='alias'</code>.
 To apply <code>env_prefix</code> only to variable names (the default behavior), set <code>env_prefix_target='variable'</code>.</p>
@@ -6170,8 +6343,9 @@ collects values for sub model fields separately, and you may get unexpected resu
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>env_nested_delimiter</code> option applies only to variables that point to declared fields.
-If a variable points to an unknown field no conversion will take place.</p>
+<p>The <code>env_nested_delimiter</code> option applies to variables that match a declared top-level field's
+name or alias. Unknown keys within that field's nested value are still subject to the nested
+model's validation. See <a href="#unknown-environment-variables">Unknown environment variables</a>.</p>
 </div>
 <p>As an example, given the following environment variables:
 <div class="language-bash highlight"><pre><span></span><code><span class="c1"># your environment</span>
@@ -6690,6 +6864,7 @@ is customised</a>:</p>
 <li>Argparse style <code>--field 1 --field 2</code></li>
 <li>Lazy style <code>--field=1,2</code></li>
 </ul>
+<p>Use the JSON style <code>--field='[]'</code> to pass an empty list. Empty arrays contribute no items when mixed with other list arguments.</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span>
@@ -6710,6 +6885,14 @@ is customised</a>:</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;example.py&#39;</span><span class="p">,</span> <span class="s1">&#39;--my_list&#39;</span><span class="p">,</span> <span class="s1">&#39;1,2&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; {&#39;my_list&#39;: [1, 2]}</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;example.py&#39;</span><span class="p">,</span> <span class="s1">&#39;--my_list&#39;</span><span class="p">,</span> <span class="s1">&#39;[]&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<span class="c1">#&gt; {&#39;my_list&#39;: []}</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;example.py&#39;</span><span class="p">,</span> <span class="s1">&#39;--my_list&#39;</span><span class="p">,</span> <span class="s1">&#39;[]&#39;</span><span class="p">,</span> <span class="s1">&#39;--my_list&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<span class="c1">#&gt; {&#39;my_list&#39;: [3]}</span>
 </code></pre></div>
 <h4 id="dictionaries">Dictionaries<a class="headerlink" href="#dictionaries" title="Permanent link">&para;</a></h4>
 <p>CLI argument parsing of dictionaries supports intermixing of any of the below two styles:</p>
@@ -6796,6 +6979,16 @@ is customised</a>:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">User</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; {&#39;first_name&#39;: &#39;John&#39;, &#39;last_name&#39;: &#39;Doe&#39;}</span>
 </code></pre></div>
+<h3 id="variadic-named-options">Variadic named options<a class="headerlink" href="#variadic-named-options" title="Permanent link">&para;</a></h3>
+<p>Collection fields are repeated options by default (<code>--param a --param b</code>). This covers any
+<code>Sequence</code>, <code>Set</code>, or <code>Mapping</code> type, including subclasses such as <code>tuple</code>, <code>frozenset</code>,
+<code>deque</code>, and <code>OrderedDict</code>. <code>str</code>, <code>bytes</code>, and <code>bytearray</code> are sequences too, but they take
+a single value. Wrap a collection field in <code>CliVariadicArg</code> to accept remaining values after
+a single option (<code>--param a b c</code>).</p>
+<p>Repeating the option <strong>replaces</strong> the previous values (<code>--param a b --param c</code> becomes
+<code>['c']</code>), which is the opposite of <code>action=append</code>. <code>nargs='*'</code> is greedy: it consumes
+values until the next option flag, so a following subcommand name can be swallowed.</p>
+<p><code>CliVariadicArg</code> is ignored on <code>AliasPath</code> fields; those still use <code>action=append</code>.</p>
 <h3 id="subcommands-and-positional-arguments">Subcommands and Positional Arguments<a class="headerlink" href="#subcommands-and-positional-arguments" title="Permanent link">&para;</a></h3>
 <p>Subcommands and positional arguments are expressed using the <code>CliSubCommand</code> and <code>CliPositionalArg</code> annotations. The
 subcommand annotation can only be applied to required fields (i.e. fields that do not have a default value).
@@ -7803,12 +7996,14 @@ as the target mount point. If you want to use a different location, change <code
 <p>The default secrets implementation, <code>SecretsSettingsSource</code>, has behaviour that is not always desired or sufficient.
 For example, the default implementation does not support secret fields in nested submodels.</p>
 <p><code>NestedSecretsSettingsSource</code> can be used as a drop-in replacement to <code>SecretsSettingsSource</code> to adjust the default behaviour.
+It is opt-in: you have to configure it explicitly via the <code>settings_customise_sources</code> hook (see the examples below),
+otherwise <code>BaseSettings</code> keeps using the default <code>SecretsSettingsSource</code>.
 All differences are summarized in the table below.</p>
 <table>
 <thead>
 <tr>
 <th><code>SecretsSettingsSource</code></th>
-<th><code>NestedSecretsSettingsSourcee</code></th>
+<th><code>NestedSecretsSettingsSource</code></th>
 </tr>
 </thead>
 <tbody>
@@ -7993,6 +8188,14 @@ Value for <code>Settings.db.user</code> can be passed in env variable <code>MY_D
         <span class="p">)</span>
 </code></pre></div></p>
 <h3 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Apart from <code>secrets_dir</code>, which is shared with <code>SecretsSettingsSource</code>, all of the options below are read
+only by <code>NestedSecretsSettingsSource</code>. They have no effect unless you add that source to your settings
+sources via the <code>settings_customise_sources</code> hook, as shown in the examples above — the default
+<code>SecretsSettingsSource</code> ignores them. Setting one of them without configuring the source raises a
+<code>UserWarning</code> telling you it will be ignored.</p>
+</div>
 <h4 id="secrets_dir">secrets_dir<a class="headerlink" href="#secrets_dir" title="Permanent link">&para;</a></h4>
 <p>Path to secrets directory, same as <code>SecretsSettingsSource.secrets_dir</code>. If <code>list</code>, the last match wins.
 If <code>secrets_dir</code> is passed in both source constructor and model config, values are not merged (constructor wins).</p>
@@ -8014,6 +8217,10 @@ a large file under <code>secrets_dir</code>.</p>
 <p>If multiple <code>secrets_dir</code> passed, the limit applies to each directory independently.</p>
 <h4 id="secrets_case_sensitive">secrets_case_sensitive<a class="headerlink" href="#secrets_case_sensitive" title="Permanent link">&para;</a></h4>
 <p>Same as <code>case_sensitive</code>, but works for secrets only. If not specified, defaults to <code>case_sensitive</code>.</p>
+<p>Unlike <code>case_sensitive</code> for environment variables, this option is honored on every platform.
+<code>os.environ</code> is case-insensitive on Windows, so <code>EnvSettingsSource</code> falls back to
+case-insensitive matching there; secrets are files and keep their case, so no such fallback
+applies.</p>
 <h4 id="secrets_nested_delimiter">secrets_nested_delimiter<a class="headerlink" href="#secrets_nested_delimiter" title="Permanent link">&para;</a></h4>
 <p>Same as <code>env_nested_delimiter</code>, but works for secrets only. If not specified, defaults to <code>env_nested_delimiter</code>.
 This option is used to implement <em>nested secrets directory</em> layout and allows you to do even nasty things
@@ -9128,7 +9335,7 @@ read with application-level locking.</p>
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -9180,7 +9387,7 @@ read with application-level locking.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

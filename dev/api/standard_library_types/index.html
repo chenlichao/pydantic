@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Standard Library Types - Pydantic Validation" />
-<meta property="og:description" content="Support for common types from the Python standard library." />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/api/standard_library_types.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/api/standard_library_types/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Standard Library Types - Pydantic Validation" />
-<meta property="twitter:description" content="Support for common types from the Python standard library." />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/api/standard_library_types.png" />
-</head>
+  </head>
   
   
     
@@ -633,6 +620,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -2198,6 +2213,28 @@ to help you monitor and understand your
 </li>
         
           <li class="md-nav__item">
+  <a href="#ordered-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordered dictionaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#typed-dictionaries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3459,6 +3496,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4581,6 +4646,28 @@ to help you monitor and understand your
 </li>
         
           <li class="md-nav__item">
+  <a href="#ordered-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ordered dictionaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Counters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#typed-dictionaries" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4794,14 +4881,14 @@ the possible constraints, and whether strictness can be configured.</p>
 <p>Unless specified otherwise, values are serialized as-is, in both Python and JSON modes.</p>
 </div>
 <h2 id="booleans">Booleans<a class="headerlink" href="#booleans" title="Permanent link">&para;</a></h2>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool"><code>bool</code></a></p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool"><code>bool</code></a></p>
 <h3>Validation</h3>
 
 <ul>
-<li>A valid <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool"><code>bool</code></a> instance, i.e. <code>True</code> or <code>False</code>.</li>
+<li>A valid <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool"><code>bool</code></a> instance, i.e. <code>True</code> or <code>False</code>.</li>
 <li>The integers <code>0</code> or <code>1</code>.</li>
 <li>A string, which when converted to lowercase is one of <code>'0'</code>, <code>'off'</code>, <code>'f'</code>, <code>'false'</code>, <code>'n'</code>, <code>'no'</code>, <code>'1'</code>, <code>'on'</code> <code>'t'</code>, <code>'true'</code>, <code>'y'</code>, <code>'yes'</code>.</li>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> objects that are valid per the previous rule when decoded to a string.</li>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> objects that are valid per the previous rule when decoded to a string.</li>
 </ul>
 <h3>Strictness</h3>
 
@@ -4833,16 +4920,16 @@ type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-m
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h2>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a></p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a></p>
 <h3>Validation</h3>
 
 <ul>
 <li>Strings are accepted as-is.</li>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytearray"><code>bytearray</code></a> are decoded to UTF-8 strings.</li>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#module-enum">Enums</a> are converted using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#enum.Enum.value"><code>value</code></a> attribute, by calling <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str()</code></a>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytearray"><code>bytearray</code></a> are decoded to UTF-8 strings.</li>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#module-enum">Enums</a> are converted using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#enum.Enum.value"><code>value</code></a> attribute, by calling <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str()</code></a>
   on it.</li>
 <li>If <a class="autorefs autorefs-internal" href="../config/#pydantic.config.ConfigDict.coerce_numbers_to_str"><code>coerce_numbers_to_str</code></a> is set, any number type
-  (<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float"><code>float</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal"><code>Decimal</code></a>) will be coerced to a string and accepted
+  (<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#float"><code>float</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal"><code>Decimal</code></a>) will be coerced to a string and accepted
   as-is.</li>
 </ul>
 <h3>Constraints</h3>
@@ -4929,13 +5016,13 @@ type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-m
 <span class="c1">#&gt; test</span>
 </code></pre></div>
 <h2 id="bytes">Bytes<a class="headerlink" href="#bytes" title="Permanent link">&para;</a></h2>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a>.</p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a>.</p>
 <p>See also: <a class="autorefs autorefs-internal" href="../types/#pydantic.types.ByteSize"><code>ByteSize</code></a>.</p>
 <h3>Validation</h3>
 
 <ul>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> instances are validated as is.</li>
-<li>Strings and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytearray"><code>bytearray</code></a> instances are converted as bytes, following the <a class="autorefs autorefs-internal" href="../config/#pydantic.config.ConfigDict.val_json_bytes"><code>val_json_bytes</code></a> configuration value
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> instances are validated as is.</li>
+<li>Strings and <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytearray"><code>bytearray</code></a> instances are converted as bytes, following the <a class="autorefs autorefs-internal" href="../config/#pydantic.config.ConfigDict.val_json_bytes"><code>val_json_bytes</code></a> configuration value
   (despite its name, it applies to both Python and JSON modes).</li>
 </ul>
 <h3>Constraints</h3>
@@ -4966,7 +5053,7 @@ type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-m
 library can also be used.</p>
 <h3>Strictness</h3>
 
-<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> instances are valid. Pydantic provides the <a class="autorefs autorefs-internal" href="../types/#pydantic.types.StrictBytes"><code>StrictBytes</code></a>
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> instances are valid. Pydantic provides the <a class="autorefs autorefs-internal" href="../types/#pydantic.types.StrictBytes"><code>StrictBytes</code></a>
 type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-metadata-class">using the <code>Strict()</code> metadata class</a>.</p>
 <p>In JSON mode, strict mode has no effect.</p>
 <!-- old anchor added for backwards compatibility -->
@@ -4978,7 +5065,7 @@ type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-m
 <!-- markdownlint-disable-next-line no-empty-links -->
 <p><a href="" id="int"></a></p>
 <h3 id="integers">Integers<a class="headerlink" href="#integers" title="Permanent link">&para;</a></h3>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a>.</p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a>.</p>
 <h4>Validation</h4>
 
 <ul>
@@ -5049,7 +5136,7 @@ type as a convenience to <a href="../../concepts/strict_mode/#using-the-strict-m
 <!-- markdownlint-disable-next-line no-empty-links -->
 <p><a href="" id="float"></a></p>
 <h3 id="floats">Floats<a class="headerlink" href="#floats" title="Permanent link">&para;</a></h3>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float"><code>float</code></a>.</p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#float"><code>float</code></a>.</p>
 <h4>Validation</h4>
 
 <ul>
@@ -5191,17 +5278,49 @@ Pydantic provides the <a class="autorefs autorefs-internal" href="../types/#pyda
 <tr>
 <td><code>max_digits</code></td>
 <td>The maximum number of decimal digits allowed. The zero before the decimal point and trailing zeros are not counted.</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/string#regexp"><code>pattern</code></a> keyword, to describe the string pattern</td>
+<td>N/A (see below)</td>
 </tr>
 <tr>
 <td><code>decimal_places</code></td>
 <td>The maximum number of decimal places allowed. Trailing zeros are not counted.</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/string#regexp"><code>pattern</code></a> keyword, to describe the string pattern</td>
+<td>N/A (see below)</td>
 </tr>
 </tbody>
 </table>
-<p>Note that the JSON Schema <a href="https://json-schema.org/understanding-json-schema/reference/string#regexp"><code>pattern</code></a> keyword will be specified
-in the JSON Schema to describe the string pattern in all cases (and can vary if <code>max_digits</code> and/or <code>decimal_places</code> is specified).</p>
+<div style="border-left: .15rem solid rgb(244, 227, 76); padding: 0 .5rem;">
+<p><span style="font-style: italic; color: rgb(244, 227, 76);">Changed in v2.12: </span><span>The JSON Schema includes a <a href="https://json-schema.org/understanding-json-schema/reference/string#regexp"><code>pattern</code></a> matching the <code>max_digits</code>
+and <code>decimal_places</code> constraints.</span></p>
+</div>
+<div style="border-left: .15rem solid rgb(244, 227, 76); padding: 0 .5rem;">
+<p><span style="font-style: italic; color: rgb(244, 227, 76);">Changed in v2.14: </span><span>The JSON Schema no longer includes a <a href="https://json-schema.org/understanding-json-schema/reference/string#regexp"><code>pattern</code></a> by default,
+as the generated pattern can cause issues for downstream consumers due to its complexity.</span><div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">TypeAdapter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic.json_schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenerateJsonSchema</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyGenerateJsonSchema</span><span class="p">(</span><span class="n">GenerateJsonSchema</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_decimal_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_decimal_pattern</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+
+
+<span class="n">ta</span> <span class="o">=</span> <span class="n">TypeAdapter</span><span class="p">(</span><span class="n">Annotated</span><span class="p">[</span><span class="n">Decimal</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">ta</span><span class="o">.</span><span class="n">json_schema</span><span class="p">(</span><span class="n">schema_generator</span><span class="o">=</span><span class="n">MyGenerateJsonSchema</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;serialization&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{</span>
+<span class="sd">    &#39;pattern&#39;: &#39;^-?(?:(?:0|[1-9][0-9]{0,2})(?:\\.[0-9]{1,2}0*)?|0E[+-][1-9][0-9]*|[1-9](?:\\.[0-9]+)?E\\+[1-2])$&#39;,</span>
+<span class="sd">    &#39;type&#39;: &#39;string&#39;,</span>
+<span class="sd">}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</code></pre></div>
+<p>The generated pattern also no longer uses lookahead assertions, and takes exponents and <code>allow_inf_nan</code> into account.</p>
+</p>
+<p>The pattern can be included by subclassing <a class="autorefs autorefs-internal" href="../json_schema/#pydantic.json_schema.GenerateJsonSchema"><code>GenerateJsonSchema</code></a> and overriding the
+<a class="autorefs autorefs-internal" href="../json_schema/#pydantic.json_schema.GenerateJsonSchema.get_decimal_pattern"><code>get_decimal_pattern()</code></a> method:</p>
+</div>
 <p>These constraints can be provided using the <a class="autorefs autorefs-internal" href="../fields/#pydantic.fields.Field"><code>Field()</code></a> function.
 The <code>Le</code>, <code>Ge</code>, <code>Lt</code>, <code>Gt</code> and <code>MultipleOf</code> metadata types from the <a href="https://github.com/annotated-types/annotated-types"><code>annotated-types</code></a>
 library and the <a class="autorefs autorefs-internal" href="../types/#pydantic.types.AllowInfNan"><code>AllowInfNan</code></a> type can also be used.</p>
@@ -5242,22 +5361,22 @@ A <a href="../../concepts/serialization/#field-plain-serializer">serializer</a> 
 <div style="border-left: .15rem solid rgb(79, 196, 100); padding: 0 .5rem;">
 <p><span style="font-style: italic; color: rgb(79, 196, 100);">Added in v2.9.</span></p>
 </div>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex</code></a>.</p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex</code></a>.</p>
 <h4>Validation</h4>
 
 <ul>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex</code></a> instances are validated as-is.</li>
-<li>In Python mode, data is validated using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex()</code></a> constructor.</li>
-<li>In JSON mode, string are validated using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex()</code></a> constructor,
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex</code></a> instances are validated as-is.</li>
+<li>In Python mode, data is validated using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex()</code></a> constructor.</li>
+<li>In JSON mode, string are validated using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex()</code></a> constructor,
    numbers (integers and floats) are used as the real part.</li>
 </ul>
 <h4>Strictness</h4>
 
-<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex</code></a> instances are accepted. In JSON mode, only strings that are
-accepted by the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex()</code></a> constructor are allowed.</p>
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex</code></a> instances are accepted. In JSON mode, only strings that are
+accepted by the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex()</code></a> constructor are allowed.</p>
 <h4>Serialization</h4>
 
-<p>In <a href="../../concepts/serialization/#python-mode">Python mode</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#complex"><code>complex</code></a> instances are
+<p>In <a href="../../concepts/serialization/#python-mode">Python mode</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#complex"><code>complex</code></a> instances are
 serialized as is.</p>
 <p>In <a href="../../concepts/serialization/#json-mode">JSON mode</a>, they are serialized as strings.</p>
 <!-- old anchor added for backwards compatibility -->
@@ -5690,13 +5809,13 @@ their <a class="autorefs autorefs-external" href="https://docs.python.org/3/libr
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="none-types">None types<a class="headerlink" href="#none-types" title="Permanent link">&para;</a></h2>
-<p>Supported types: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/constants.html#None"><code>None</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/types.html#types.NoneType"><code>NoneType</code></a> or <code>Literal[None]</code> (they are <a href="https://typing.readthedocs.io/en/latest/spec/special-types.html#none">equivalent</a>).</p>
+<p>Supported types: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/constants.html#None"><code>None</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/types.html#types.NoneType"><code>NoneType</code></a> or <code>Literal[None]</code> (they are <a href="https://typing.readthedocs.io/en/latest/spec/special-types.html#none">equivalent</a>).</p>
 <p>Allows only <code>None</code> as a value.</p>
 <h2 id="generic-collection-types">Generic collection types<a class="headerlink" href="#generic-collection-types" title="Permanent link">&para;</a></h2>
 <p>Pydantic supports a wide variety of generic collection types, both built-ins (such as <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>) and abstract base classes
 from the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#module-collections.abc"><code>collections.abc</code></a> module (such as <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence"><code>Sequence</code></a>).</p>
 <p>In most cases, it is recommended to make use of the built-in types over the abstract ones. Due to <a href="../../concepts/models/#data-conversion">data coercion</a>,
-using <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> will allow most other iterables as input, with better performance.</p>
+using <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> will allow most other iterables as input, with better performance.</p>
 <div class="admonition note">
 <p class="admonition-title">Strictness on collection types</p>
 <p>When applying <a href="../../concepts/strict_mode/">strict mode</a> on collection types, strictness will <em>not</em> apply
@@ -5707,8 +5826,8 @@ to the inner types. This may change in the future, see <a href="https://github.c
 <h4>Validation</h4>
 
 <ul>
-<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a> instances, or any iterable that is <em>not</em> a
-  <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instance.</li>
+<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a> instances, or any iterable that is <em>not</em> a
+  <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instance.</li>
 <li>If a generic parameter is provided, the appropriate validation is applied to all items of the list.</li>
 </ul>
 <h4>Constraints</h4>
@@ -5758,7 +5877,7 @@ The strict constraint must be applied to the parameter type for this to work.</p
 <span class="c1">#&gt; [1, 2, 3]</span>
 </code></pre></div>
 <h3 id="tuples">Tuples<a class="headerlink" href="#tuples" title="Permanent link">&para;</a></h3>
-<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Tuple"><code>typing.Tuple</code></a>).</p>
+<p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Tuple"><code>typing.Tuple</code></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a href="https://typing.python.org/en/latest/spec/generics.html#unpacking-tuple-types">Unpacked tuple types</a>
@@ -5768,8 +5887,8 @@ tracked in <a href="https://github.com/pydantic/pydantic/issues/5952">this issue
 <h4>Validation</h4>
 
 <ul>
-<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a> instances, or any iterable that is <em>not</em> a
-  <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> instance.</li>
+<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a> instances, or any iterable that is <em>not</em> a
+  <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> instance.</li>
 <li>Appropriate validation is applied to items of the tuple, if <a href="https://typing.python.org/en/latest/spec/tuples.html#tuple-type-form">element types</a>
   are specified.</li>
 </ul>
@@ -5804,7 +5923,7 @@ library can also be used.</p>
 depending on the tuple shape.</p>
 <h4>Strictness</h4>
 
-<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> instances are valid. Strict mode does <em>not</em> apply to the items of the tuple.
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> instances are valid. Strict mode does <em>not</em> apply to the items of the tuple.
 The strict constraint must be applied to the parameter types for this to work.</p>
 <h4>Example</h4>
 
@@ -5830,7 +5949,7 @@ The strict constraint must be applied to the parameter types for this to work.</
 <h4>Validation</h4>
 
 <ul>
-<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instances. Validate each item according to the field definition.</li>
+<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instances. Validate each item according to the field definition.</li>
 <li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict"><code>dict</code></a> instances. Keys must match the named tuple field names, and values are validated according to the field definition.</li>
 <li>Allows instances of the named tuple class (fields are revalidated).</li>
 </ul>
@@ -5860,13 +5979,13 @@ they are serialized as arrays.</p>
 <span class="c1">#&gt; {&#39;p&#39;: (1, 2)}</span>
 </code></pre></div>
 <h3 id="sets">Sets<a class="headerlink" href="#sets" title="Permanent link">&para;</a></h3>
-<p>Types: <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableSet"><code>collections.abc.MutableSet</code></a>) and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Set"><code>collections.abc.Set</code></a>)
+<p>Types: <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableSet"><code>collections.abc.MutableSet</code></a>) and <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Set"><code>collections.abc.Set</code></a>)
 (deprecated aliases: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Set"><code>typing.Set</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.FrozenSet"><code>typing.FrozenSet</code></a>).</p>
 <h4>Validation</h4>
 
 <ul>
-<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instances, or any iterable that is <em>not</em> a
-  <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a> instance.</li>
+<li>Allows <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple"><code>tuple</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a> instances, or any iterable that is <em>not</em> a
+  <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">string</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes">bytes</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytearray">bytearray</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict">dict</a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mapping</a>. Produces a <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a> instance.</li>
 <li>If a generic parameter is provided, the appropriate validation is applied to all items of the set/frozenset.</li>
 </ul>
 <h4>Constraints</h4>
@@ -5898,7 +6017,7 @@ The <code>MinLen</code> and <code>MaxLen</code> metadata types from the <a href=
 library can also be used.</p>
 <h4>Strictness</h4>
 
-<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a>/<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code>frozenset</code></a> instances are valid. Strict mode does <em>not</em> apply to the items of the set.
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#set"><code>set</code></a>/<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset"><code>frozenset</code></a> instances are valid. Strict mode does <em>not</em> apply to the items of the set.
 The strict constraint must be applied to the parameter type for this to work.</p>
 <h4>Serialization</h4>
 
@@ -5926,7 +6045,9 @@ they are serialized as arrays.</p>
 <p>Standard library type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.deque"><code>collections.deque</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Deque"><code>typing.Deque</code></a>).</p>
 <h4>Validation</h4>
 
-<p>Values are first validated as a <a href="#lists">list</a>, and then passed to the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.deque"><code>deque</code></a> constructor.</p>
+<p>Any iterable (except strings, bytes and mappings) is accepted and converted to a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.deque"><code>deque</code></a>,
+with each item validated against the parameter type. If the input is already a <code>deque</code> instance, its
+<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.deque.maxlen"><code>maxlen</code></a> attribute is preserved.</p>
 <h4>Constraints</h4>
 
 <p>Deques support the following constraints:</p>
@@ -6073,12 +6194,12 @@ they are serialized as arrays.</p>
 <tr>
 <td><code>min_length</code></td>
 <td>The dictionary must have at least this many items</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/array#length"><code>minItems</code></a> keyword</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>minProperties</code></a> keyword</td>
 </tr>
 <tr>
 <td><code>max_length</code></td>
 <td>The dictionary must have at most this many items</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/array#length"><code>maxItems</code></a> keyword</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>maxProperties</code></a> keyword</td>
 </tr>
 </tbody>
 </table>
@@ -6139,12 +6260,12 @@ The strict constraint must be applied to the parameter types for this to work.</
 <tr>
 <td><code>min_length</code></td>
 <td>The dictionary must have at least this many items</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/array#length"><code>minItems</code></a> keyword</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>minProperties</code></a> keyword</td>
 </tr>
 <tr>
 <td><code>max_length</code></td>
 <td>The dictionary must have at most this many items</td>
-<td><a href="https://json-schema.org/understanding-json-schema/reference/array#length"><code>maxItems</code></a> keyword</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>maxProperties</code></a> keyword</td>
 </tr>
 </tbody>
 </table>
@@ -6157,6 +6278,136 @@ library can also be used.</p>
 The strict constraint must be applied to the parameter types for this to work.</p>
 <h4>Example</h4>
 
+<h3 id="ordered-dictionaries">Ordered dictionaries<a class="headerlink" href="#ordered-dictionaries" title="Permanent link">&para;</a></h3>
+<p>Standard library type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict"><code>collections.OrderedDict</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.OrderedDict"><code>typing.OrderedDict</code></a>).</p>
+<h4>Validation</h4>
+
+<ul>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict"><code>OrderedDict</code></a> instances are accepted as is.</li>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict"><code>dict</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mappings</a> instances are accepted and coerced to an <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict"><code>OrderedDict</code></a>.</li>
+<li>If generic parameters for keys and values are provided, the appropriate validation is applied.</li>
+</ul>
+<h4>Constraints</h4>
+
+<p>As with <a href="#dictionaries">dictionaries</a>, ordered dictionaries support the following constraints:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Description</th>
+<th>JSON Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_length</code></td>
+<td>The dictionary must have at least this many items</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>minProperties</code></a> keyword</td>
+</tr>
+<tr>
+<td><code>max_length</code></td>
+<td>The dictionary must have at most this many items</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>maxProperties</code></a> keyword</td>
+</tr>
+</tbody>
+</table>
+<p>These constraints can be provided using the <a class="autorefs autorefs-internal" href="../fields/#pydantic.fields.Field"><code>Field()</code></a> function.
+The <code>MinLen</code> and <code>MaxLen</code> metadata types from the <a href="https://github.com/annotated-types/annotated-types"><code>annotated-types</code></a>
+library can also be used.</p>
+<h4>Strictness</h4>
+
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict"><code>OrderedDict</code></a> instances are valid. Strict mode does <em>not</em> apply to the keys and values of the ordered dictionaries.
+The strict constraint must be applied to the parameter types for this to work.</p>
+<h4>Example</h4>
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<span class="c1">#&gt; {&#39;x&#39;: OrderedDict({&#39;foo&#39;: 1})}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1 validation error for Model</span>
+<span class="sd">    x</span>
+<span class="sd">      Input should be a valid OrderedDict [type=ordered_dict_type, input_value=&#39;test&#39;, input_type=str]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<h3 id="counters">Counters<a class="headerlink" href="#counters" title="Permanent link">&para;</a></h3>
+<p>Standard library type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.Counter"><code>collections.Counter</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Counter"><code>typing.Counter</code></a>).</p>
+<h4>Validation</h4>
+
+<ul>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.Counter"><code>Counter</code></a> instances are accepted as is.</li>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/expressions.html#dict"><code>dict</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-mapping">mappings</a> instances are accepted and coerced to a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.Counter"><code>Counter</code></a>.</li>
+<li>If a generic parameter for keys is provided, the appropriate validation is applied. Values are always validated as <a href="#integers">integers</a>.</li>
+</ul>
+<h4>Constraints</h4>
+
+<p>As with <a href="#dictionaries">dictionaries</a>, counters support the following constraints:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Description</th>
+<th>JSON Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_length</code></td>
+<td>The counter must have at least this many items</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>minProperties</code></a> keyword</td>
+</tr>
+<tr>
+<td><code>max_length</code></td>
+<td>The counter must have at most this many items</td>
+<td><a href="https://json-schema.org/understanding-json-schema/reference/object#size"><code>maxProperties</code></a> keyword</td>
+</tr>
+</tbody>
+</table>
+<p>These constraints can be provided using the <a class="autorefs autorefs-internal" href="../fields/#pydantic.fields.Field"><code>Field()</code></a> function.
+The <code>MinLen</code> and <code>MaxLen</code> metadata types from the <a href="https://github.com/annotated-types/annotated-types"><code>annotated-types</code></a>
+library can also be used.</p>
+<h4>Strictness</h4>
+
+<p>In <a href="../../concepts/strict_mode/">strict mode</a>, only <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/collections.html#collections.Counter"><code>Counter</code></a> instances are valid. Strict mode does <em>not</em> apply to the keys and values of the counters.
+The strict constraint must be applied to the parameter types for this to work.</p>
+<h4>Example</h4>
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Counter</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<span class="c1">#&gt; {&#39;x&#39;: Counter({&#39;foo&#39;: 1})}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1 validation error for Model</span>
+<span class="sd">    x</span>
+<span class="sd">      Input should be a valid Counter [type=counter_type, input_value=&#39;test&#39;, input_type=str]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
 <!-- old anchor added for backwards compatibility -->
 <!-- markdownlint-disable-next-line no-empty-links -->
 <p><a href="" id="typeddict"></a></p>
@@ -6245,7 +6496,7 @@ Strict mode does <em>not</em> apply to the values of the typed dictionary. The s
 (and will validate the items type while doing so). This means that even if you provide a concrete
 container such as a list, the validated type will <em>not</em> be of type <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-list"><code>list</code></a>. However, Pydantic
 will ensure that the input value is iterable by getting an <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-iterator">iterator</a> from it (by calling
-<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#iter"><code>iter()</code></a> on the value).</p>
+<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#iter"><code>iter()</code></a> on the value).</p>
 <p>It is recommended to use concrete collection types (such as <a href="#lists">lists</a>) instead, unless
 you are using an infinite iterator (in which case eagerly validating the input would result
 in an infinite loop).</p>
@@ -6319,7 +6570,8 @@ and <a class="autorefs autorefs-internal" href="../networks/#pydantic.networks.I
 <h3>Strictness</h3>
 
 <p>In <a href="../../concepts/strict_mode/">strict mode</a>, only the address types are accepted.
-In JSON mode, strict mode has no effect.</p>
+In JSON mode, only strings are accepted in strict mode, while integers are also accepted in lax mode
+(e.g. <code>3232235521</code> is validated as <code>IPv4Address('192.168.0.1')</code>).</p>
 <h3>Serialization</h3>
 
 <p>In <a href="../../concepts/serialization/#python-mode">Python mode</a>, IP addresses are serialized as is. In <a href="../../concepts/serialization/#json-mode">JSON mode</a>,
@@ -6374,8 +6626,8 @@ they are serialized as strings.</p>
 <p>Built-in type: <a class="autorefs autorefs-external" href="https://docs.python.org/3/glossary.html#term-type"><code>type</code></a> (deprecated alias: <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Type"><code>typing.Type</code></a>).</p>
 <h3>Validation</h3>
 
-<p>Allows any type that is a subclass of the type argument. For instance, with <code>type[str]</code>, allows the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>
-class or any <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> subclass as an input. If no type argument is provided (i.e. <code>type</code> is used as an annotation),
+<p>Allows any type that is a subclass of the type argument. For instance, with <code>type[str]</code>, allows the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a>
+class or any <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a> subclass as an input. If no type argument is provided (i.e. <code>type</code> is used as an annotation),
 allow any class.</p>
 <h3>Serialization</h3>
 
@@ -6476,16 +6728,17 @@ allow any class.</p>
 
 <ul>
 <li>For <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.Pattern"><code>Pattern</code></a> instances, check that the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.Pattern.pattern"><code>pattern</code></a> attribute
-  is of the right type (<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> depending on the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.Pattern"><code>Pattern</code></a> type
+  is of the right type (<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> depending on the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.Pattern"><code>Pattern</code></a> type
   parameter).</li>
-<li>If the type parameter is <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a>, input values of type <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> respectively)
+<li>If the type parameter is <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a>, input values of type <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a> (or <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> respectively)
   are attempted to be compiled using <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.compile"><code>re.compile()</code></a>.</li>
 </ul>
 <h3>Serialization</h3>
 
 <p>In <a href="../../concepts/serialization/#python-mode">Python mode</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/re.html#re.Pattern"><code>Pattern</code></a> instances are
 serialized as is.</p>
-<p>In <a href="../../concepts/serialization/#json-mode">JSON mode</a>, they are serialized as strings.</p>
+<p>In <a href="../../concepts/serialization/#json-mode">JSON mode</a>, they are serialized as strings (note that flags
+are currently <em>not</em> preserved).</p>
 <!-- old anchor added for backwards compatibility -->
 <!-- markdownlint-disable-next-line no-empty-links -->
 <p><a href="" id="pathlibpath"></a></p>
@@ -6498,14 +6751,14 @@ serialized as is.</p>
 <li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/pathlib.html#pathlib.WindowsPath"><code>pathlib.WindowsPath</code></a>.</li>
 <li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PurePosixPath"><code>pathlib.PurePosixPath</code></a>.</li>
 <li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/pathlib.html#pathlib.PureWindowsPath"><code>pathlib.PureWindowsPath</code></a>.</li>
-<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/os.html#os.PathLike"><code>os.PathLike</code></a> (must be parameterized with <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Any"><code>Any</code></a>).</li>
+<li><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/os.html#os.PathLike"><code>os.PathLike</code></a> (must be parameterized with <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> or <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Any"><code>Any</code></a>).</li>
 </ul>
 <h3>Validation</h3>
 
 <ul>
 <li>Path instances are validated as is.</li>
 <li>Strings are accepted and passed to the type constructor. If <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/os.html#os.PathLike"><code>os.PathLike</code></a> was used,
-  bytes are accepted if it was parameterized with the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a> type.</li>
+  bytes are accepted if it was parameterized with the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a> type.</li>
 </ul>
 <h3>Strictness</h3>
 
@@ -6586,7 +6839,7 @@ serialized as is.</p>
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -6638,7 +6891,7 @@ serialized as is.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

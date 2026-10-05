@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Models - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/models.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/concepts/models/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Models - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/models.png" />
-</head>
+  </head>
   
   
     
@@ -651,6 +638,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../install/" class="md-nav__link">
         
   
@@ -970,6 +985,23 @@ to help you monitor and understand your
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Nested models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cyclic-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cyclic references
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3348,6 +3380,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4229,6 +4289,23 @@ to help you monitor and understand your
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Nested models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cyclic-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cyclic references
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4594,8 +4671,8 @@ can be useful:</p>
 </ol>
 <p>In this example, <code>User</code> is a model with two fields:</p>
 <ul>
-<li><code>id</code>, which is an integer (defined using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> type) and is required</li>
-<li><code>name</code>, which is a string (defined using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a> type) and is not required (it has a default value).</li>
+<li><code>id</code>, which is an integer (defined using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> type) and is required</li>
+<li><code>name</code>, which is a string (defined using the <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a> type) and is not required (it has a default value).</li>
 </ul>
 <p>The documentation on <a href="../types/">types</a> expands on the supported types.</p>
 <p>Fields can be customized in a number of ways using the <a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field()</code></a> function.
@@ -4795,8 +4872,78 @@ that will override the <code>extra</code> configuration value of the model for t
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p>Self-referencing models are supported. For more details, see  the documentation related to
-<a href="../forward_annotations/#self-referencing-or-recursive-models">forward annotations</a>.</p>
+<h3 id="cyclic-references">Cyclic references<a class="headerlink" href="#cyclic-references" title="Permanent link">&para;</a></h3>
+<p>When working with self-referencing recursive models, it is possible that you might encounter cyclic references
+in validation inputs. For example, this can happen when validating ORM instances with back-references from
+attributes.</p>
+<p>Rather than raising a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#RecursionError"><code>RecursionError</code></a> while attempting to validate data with cyclic references, Pydantic is able
+to detect the cyclic reference and raise an appropriate <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.ValidationError"><code>ValidationError</code></a>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python 3.10 and above</label><label for="__tabbed_1_2">Python 3.14 and above</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelA</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">b</span><span class="p">:</span> <span class="s1">&#39;ModelB | None&#39;</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># (1)!</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelB</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">:</span> <span class="n">ModelA</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">cyclic_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">cyclic_data</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">cyclic_data</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cyclic_data</span><span class="p">)</span>
+<span class="c1">#&gt; {&#39;a&#39;: {&#39;b&#39;: {...}}}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ModelB</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">cyclic_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1 validation error for ModelB</span>
+<span class="sd">    a.b</span>
+<span class="sd">      Recursion error - cyclic reference detected [type=recursion_loop, input_value={&#39;a&#39;: {&#39;b&#39;: {...}}}, input_type=dict]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<ol>
+<li>As <code>ModelB</code> is not yet defined, a <a href="../forward_annotations/">forward annotation</a> needs to be used.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelA</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">ModelB</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ModelB</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">:</span> <span class="n">ModelA</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">cyclic_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">cyclic_data</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">cyclic_data</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cyclic_data</span><span class="p">)</span>
+<span class="c1">#&gt; {&#39;a&#39;: {&#39;b&#39;: {...}}}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ModelB</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">cyclic_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1 validation error for ModelB</span>
+<span class="sd">    a.b</span>
+<span class="sd">      Recursion error - cyclic reference detected [type=recursion_loop, input_value={&#39;a&#39;: {&#39;b&#39;: {...}}}, input_type=dict]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>See also: the <a href="../../examples/cyclic_references/">cyclic references example</a>, showing how to handle such
+cyclic references during validation and serialization, and the <a href="../forward_annotations/#cyclic-imports">cyclic imports</a>
+section, for models referencing each other from separate modules.</p>
 <h2 id="rebuilding-model-schema">Rebuilding model schema<a class="headerlink" href="#rebuilding-model-schema" title="Permanent link">&para;</a></h2>
 <p>When you define a model class in your code, Pydantic will analyze the body of the class to collect a variety of information
 required to perform validation and serialization, gathered in a core schema. Notably, the model's type annotations are evaluated to
@@ -5110,7 +5257,7 @@ deeper-nested attributes as appropriate.</p>
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_copy"><code>pydantic.main.BaseModel.model_copy</code></a><br></p>
 </details>
-<p>The <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_copy"><code>model_copy()</code></a> method allows models to be duplicated (with optional updates),
+<p>The <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_copy"><code>model_copy()</code></a> method allows models to be duplicated (with optional updates that <em>aren't</em> validated),
 which is particularly useful when working with frozen models.</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 
@@ -5146,7 +5293,7 @@ for more details).</p>
 <p>Here is an example using a generic Pydantic model to create an easily-reused HTTP response payload wrapper:</p>
 <!-- TODO: tabs should be auto-generated if using Ruff (https://github.com/pydantic/pydantic/issues/10083) -->
 
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python 3.10 and above</label><label for="__tabbed_1_2">Python 3.12 and above (new syntax)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python 3.10 and above</label><label for="__tabbed_2_2">Python 3.12 and above (new syntax)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
@@ -5608,7 +5755,7 @@ types like <a class="autorefs autorefs-external" href="https://docs.python.org/3
 or a default value (as per <a href="https://peps.python.org/pep-0696/">PEP 696</a>) is being used, then the default type or constraints
 will be used for both validation and serialization if the type variable is not parametrized. You can override this behavior
 using <a href="../serialization/#serializeasany-annotation"><code>SerializeAsAny</code></a>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python 3.9 and above</label><label for="__tabbed_2_2">Python 3.13 and above</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python 3.9 and above</label><label for="__tabbed_3_2">Python 3.13 and above</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span>
@@ -5793,42 +5940,59 @@ This includes extending a base model with extra fields.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">BarModel</span><span class="o">.</span><span class="n">model_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="c1">#&gt; dict_keys([&#39;foo&#39;, &#39;bar&#39;, &#39;apple&#39;, &#39;banana&#39;])</span>
 </code></pre></div>
-<p>You can also add validators by passing a dictionary to the <code>__validators__</code> argument.</p>
-<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">create_model</span><span class="p">,</span> <span class="n">field_validator</span>
+<p>Attributes such as <a href="../validators/">validators</a>, methods or <a href="../fields/#the-computed_field-decorator">computed fields</a>
+can be added to the class namespace using the <code>__namespace__</code> argument:</p>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ValidationError</span><span class="p">,</span>
+    <span class="n">computed_field</span><span class="p">,</span>
+    <span class="n">create_model</span><span class="p">,</span>
+    <span class="n">field_validator</span><span class="p">,</span>
+<span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">alphanum</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">alphanum</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">assert</span> <span class="n">v</span><span class="o">.</span><span class="n">isalnum</span><span class="p">(),</span> <span class="s1">&#39;must be alphanumeric&#39;</span>
     <span class="k">return</span> <span class="n">v</span>
 
 
-<span class="n">validators</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;username_validator&#39;</span><span class="p">:</span> <span class="n">field_validator</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)(</span><span class="n">alphanum</span><span class="p">)</span>  <span class="c1"># (1)!</span>
-<span class="p">}</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">full_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s1">&#39;</span>
+
 
 <span class="n">UserModel</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
-    <span class="s1">&#39;UserModel&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">),</span> <span class="n">__validators__</span><span class="o">=</span><span class="n">validators</span>
+    <span class="s1">&#39;UserModel&#39;</span><span class="p">,</span>
+    <span class="n">first_name</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+    <span class="n">last_name</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+    <span class="n">__namespace__</span><span class="o">=</span><span class="p">{</span>  <span class="c1"># (1)!</span>
+        <span class="s1">&#39;check_alphanum&#39;</span><span class="p">:</span> <span class="n">field_validator</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">)(</span><span class="n">alphanum</span><span class="p">),</span>
+        <span class="s1">&#39;full_name&#39;</span><span class="p">:</span> <span class="n">computed_field</span><span class="p">(</span><span class="nb">property</span><span class="p">(</span><span class="n">full_name</span><span class="p">)),</span>
+    <span class="p">},</span>
 <span class="p">)</span>
 
-<span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;scolvin&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
-<span class="c1">#&gt; username=&#39;scolvin&#39;</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s1">&#39;Doe&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+<span class="c1">#&gt; {&#39;first_name&#39;: &#39;John&#39;, &#39;last_name&#39;: &#39;Doe&#39;, &#39;full_name&#39;: &#39;John Doe&#39;}</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">UserModel</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;scolvi%n&#39;</span><span class="p">)</span>
+    <span class="n">UserModel</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s1">&#39;J%hn&#39;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s1">&#39;Doe&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    1 validation error for UserModel</span>
-<span class="sd">    username</span>
-<span class="sd">      Assertion failed, must be alphanumeric [type=assertion_error, input_value=&#39;scolvi%n&#39;, input_type=str]</span>
+<span class="sd">    first_name</span>
+<span class="sd">      Assertion failed, must be alphanumeric [type=assertion_error, input_value=&#39;J%hn&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <ol>
-<li>Make sure that the validators names do not clash with any of the field names as
+<li>The keys of the namespace must not clash with any of the field names as
    internally, Pydantic gathers all members into a namespace and mimics the normal
    creation of a class using the <a href="https://docs.python.org/3/library/types.html#dynamic-type-creation"><code>types</code> module utilities</a>.</li>
 </ol>
+<div style="border-left: .15rem solid rgb(79, 196, 100); padding: 0 .5rem;">
+<p><span style="font-style: italic; color: rgb(79, 196, 100);">Added in v2.14: </span><span>The <code>__namespace__</code> argument. Unlike <code>__validators__</code>, it isn't restricted to validators and can be used
+to provide any attribute to the class namespace (such as computed fields, properties or methods).
+It is now recommended to use <code>__namespace__</code> instead of <code>__validators__</code>, which will be deprecated in v3.</span></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To pickle a dynamically created model:</p>
@@ -6139,7 +6303,7 @@ copied during validation:</p>
 <p class="admonition-title">Note</p>
 <p>There are some situations where Pydantic does not copy attributes, such as when passing models &mdash; we use the
 model as is. You can override this behaviour by setting
-<a href="../../api/config/#pydantic.config.ConfigDict"><code>model_config['revalidate_instances'] = 'always'</code></a>.</p>
+<a href="../../api/config/#pydantic.config.ConfigDict.revalidate_instances"><code>model_config['revalidate_instances'] = 'always'</code></a>.</p>
 </div>
 
 
@@ -6208,7 +6372,7 @@ model as is. You can override this behaviour by setting
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -6260,7 +6424,7 @@ model as is. You can override this behaviour by setting
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

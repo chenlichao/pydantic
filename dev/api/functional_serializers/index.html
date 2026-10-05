@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Functional Serializers - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/api/functional_serializers.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/api/functional_serializers/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Functional Serializers - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/api/functional_serializers.png" />
-</head>
+  </head>
   
   
     
@@ -633,6 +620,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -3199,6 +3214,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4536,7 +4579,7 @@ to help you monitor and understand your
 <a href="#pydantic.functional_serializers.PlainSerializer" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">PlainSerializer</span><span class="p">(</span>
     <span class="n">func</span><span class="p">:</span> <span class="n"><span title="pydantic_core.core_schema.SerializerFunction">SerializerFunction</span></span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -4588,7 +4631,7 @@ Consider an input of <code>list</code>, which will be serialized into a space-de
           <tr class="doc-section-item">
             <td><code><span title="pydantic.functional_serializers.PlainSerializer.return_type">return_type</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                  <code><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4652,7 +4695,7 @@ Consider an input of <code>list</code>, which will be serialized into a space-de
 <a href="#pydantic.functional_serializers.WrapSerializer" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">WrapSerializer</span><span class="p">(</span>
     <span class="n">func</span><span class="p">:</span> <span class="n"><span title="pydantic_core.core_schema.WrapSerializerFunction">WrapSerializerFunction</span></span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -4728,7 +4771,7 @@ logic, and can modify the resulting value before returning it as the final outpu
           <tr class="doc-section-item">
             <td><code><span title="pydantic.functional_serializers.WrapSerializer.return_type">return_type</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                  <code><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4836,36 +4879,36 @@ logic, and can modify the resulting value before returning it as the final outpu
 <a href="#pydantic.functional_serializers.field_serializer" class="headerlink" title="Permanent link">&para;</a></h2>
           <div class="doc-overloads">
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">field_serializer</span><span class="p">(</span>
-    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;wrap&quot;</span><span class="p">],</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
-    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
     <span class="p">[</span><span class="n"><span title="pydantic.functional_serializers._FieldWrapSerializerT">_FieldWrapSerializerT</span></span><span class="p">],</span> <span class="n"><span title="pydantic.functional_serializers._FieldWrapSerializerT">_FieldWrapSerializerT</span></span>
 <span class="p">]</span>
 </code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">field_serializer</span><span class="p">(</span>
-    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;plain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
-    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
     <span class="p">[</span><span class="n"><span title="pydantic.functional_serializers._FieldPlainSerializerT">_FieldPlainSerializerT</span></span><span class="p">],</span> <span class="n"><span title="pydantic.functional_serializers._FieldPlainSerializerT">_FieldPlainSerializerT</span></span>
 <span class="p">]</span>
 </code></pre></div>          </div>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">field_serializer</span><span class="p">(</span>
-    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="n">field</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+    <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;plain&quot;</span><span class="p">,</span> <span class="s2">&quot;wrap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;plain&quot;</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">check_fields</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
     <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[[</span><span class="n"><span title="pydantic.functional_serializers._FieldWrapSerializerT">_FieldWrapSerializerT</span></span><span class="p">],</span> <span class="n"><span title="pydantic.functional_serializers._FieldWrapSerializerT">_FieldWrapSerializerT</span></span><span class="p">]</span>
     <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
@@ -4918,7 +4961,7 @@ logic, and can modify the resulting value before returning it as the final outpu
                 <code>*fields</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4955,7 +4998,7 @@ logic, and can modify the resulting value before returning it as the final outpu
                 <code>return_type</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                  <code><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4987,7 +5030,7 @@ logic, and can modify the resulting value before returning it as the final outpu
                 <code>check_fields</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a> | None</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a> | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5029,8 +5072,7 @@ logic, and can modify the resulting value before returning it as the final outpu
 
             <details class="quote">
               <summary>Source code in <code>pydantic/functional_serializers.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
-<span class="normal">224</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
 <span class="normal">227</span>
@@ -5117,8 +5159,7 @@ logic, and can modify the resulting value before returning it as the final outpu
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;plain&#39;</span><span class="p">,</span> <span class="s1">&#39;wrap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plain&#39;</span><span class="p">,</span>
-    <span class="c1"># TODO PEP 747 (grep for &#39;return_type&#39; on the whole code base):</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n">TypeForm</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>  <span class="c1"># pyright: ignore[reportArgumentType]</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n">WhenUsed</span> <span class="o">=</span> <span class="s1">&#39;always&#39;</span><span class="p">,</span>
     <span class="n">check_fields</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
@@ -5218,7 +5259,7 @@ logic, and can modify the resulting value before returning it as the final outpu
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;wrap&quot;</span><span class="p">],</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
     <span class="p">[</span><span class="n"><span title="pydantic.functional_serializers._ModelWrapSerializerT">_ModelWrapSerializerT</span></span><span class="p">],</span> <span class="n"><span title="pydantic.functional_serializers._ModelWrapSerializerT">_ModelWrapSerializerT</span></span>
 <span class="p">]</span>
@@ -5226,7 +5267,7 @@ logic, and can modify the resulting value before returning it as the final outpu
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;plain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
     <span class="p">[</span><span class="n"><span title="pydantic.functional_serializers._ModelPlainSerializerT">_ModelPlainSerializerT</span></span><span class="p">],</span> <span class="n"><span title="pydantic.functional_serializers._ModelPlainSerializerT">_ModelPlainSerializerT</span></span>
 <span class="p">]</span>
@@ -5241,7 +5282,7 @@ logic, and can modify the resulting value before returning it as the final outpu
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a></span><span class="p">[</span><span class="s2">&quot;plain&quot;</span><span class="p">,</span> <span class="s2">&quot;wrap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;plain&quot;</span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="pydantic_core.core_schema.WhenUsed" href="../pydantic_core_schema/#pydantic_core.core_schema.WhenUsed">WhenUsed</a></span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="pydantic_core.PydanticUndefined">PydanticUndefined</span></span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
     <span class="n"><span title="pydantic.functional_serializers._ModelPlainSerializerT">_ModelPlainSerializerT</span></span>
     <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span>
@@ -5360,7 +5401,7 @@ logic, and can modify the resulting value before returning it as the final outpu
                 <code>return_type</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a></code>
+                  <code><a class="autorefs autorefs-external" title="typing_extensions.TypeForm" href="https://typing-extensions.readthedocs.io/en/latest/index.html#typing_extensions.TypeForm">TypeForm</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5470,13 +5511,13 @@ logic, and can modify the resulting value before returning it as the final outpu
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_serializer</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_serializer</span><span class="p">(</span>  <span class="c1"># pyright: ignore[reportInconsistentOverload]</span>
     <span class="n">f</span><span class="p">:</span> <span class="n">_ModelPlainSerializerT</span> <span class="o">|</span> <span class="n">_ModelWrapSerializerT</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;plain&#39;</span><span class="p">,</span> <span class="s1">&#39;wrap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plain&#39;</span><span class="p">,</span>
     <span class="n">when_used</span><span class="p">:</span> <span class="n">WhenUsed</span> <span class="o">=</span> <span class="s1">&#39;always&#39;</span><span class="p">,</span>
-    <span class="n">return_type</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
+    <span class="n">return_type</span><span class="p">:</span> <span class="n">TypeForm</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>  <span class="c1"># pyright: ignore[reportArgumentType]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
     <span class="n">_ModelPlainSerializerT</span>
     <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">_ModelWrapSerializerT</span><span class="p">],</span> <span class="n">_ModelWrapSerializerT</span><span class="p">]</span>
@@ -5622,7 +5663,7 @@ logic, and can modify the resulting value before returning it as the final outpu
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -5674,7 +5715,7 @@ logic, and can modify the resulting value before returning it as the final outpu
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

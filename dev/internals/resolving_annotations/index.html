@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Resolving Annotations - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/internals/resolving_annotations.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/internals/resolving_annotations/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Resolving Annotations - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/internals/resolving_annotations.png" />
-</head>
+  </head>
   
   
     
@@ -631,6 +618,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -3071,6 +3086,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4022,7 +4065,7 @@ posed some challenges, and there is still some noticeable scar tissue in the cod
 <a href="https://peps.python.org/pep-0649/">PEP 649</a> (introduced in Python 3.14) will greatly simplify the process, especially when it comes to dealing with locals
 of a function.</p>
 <p>To evaluate forward references, Pydantic roughly follows the same logic as described in the documentation of the
-<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.get_type_hints"><code>typing.get_type_hints()</code></a> function. That is, the built-in <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#eval"><code>eval()</code></a> function is used
+<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.get_type_hints"><code>typing.get_type_hints()</code></a> function. That is, the built-in <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#eval"><code>eval()</code></a> function is used
 by passing the forward reference, a global, and a local namespace. The namespace fetching logic is defined in the
 sections below.</p>
 <h2 id="resolving-annotations-at-class-definition">Resolving annotations at class definition<a class="headerlink" href="#resolving-annotations-at-class-definition" title="Permanent link">&para;</a></h2>
@@ -4061,7 +4104,7 @@ following logic is applied:</p>
 <li>Fetch the <code>__annotations__</code> key from the current base class' <code>__dict__</code>, if present. For <code>Base</code>, this will be
    <code>{'f1': 'MyType'}</code>.</li>
 <li>Iterate over the <code>__annotations__</code> items and try to evaluate the annotation <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> using a custom wrapper around
-   the built-in <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#eval"><code>eval()</code></a> function. This function takes two <code>globals</code> and <code>locals</code> arguments:<ul>
+   the built-in <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#eval"><code>eval()</code></a> function. This function takes two <code>globals</code> and <code>locals</code> arguments:<ul>
 <li>The current module's <code>__dict__</code> is naturally used as <code>globals</code>. For <code>Base</code>, this will be
    <code>sys.modules['module1'].__dict__</code>.</li>
 <li>For the <code>locals</code> argument, Pydantic will try to resolve symbols in the following namespaces, sorted by highest priority:<ul>
@@ -4090,19 +4133,19 @@ following logic is applied:</p>
 <tbody>
 <tr>
 <td><code>f1</code></td>
-<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a></td>
+<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a></td>
 </tr>
 <tr>
 <td><code>f2</code></td>
-<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a></td>
+<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str"><code>str</code></a></td>
 </tr>
 <tr>
 <td><code>f3</code></td>
-<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool"><code>bool</code></a></td>
+<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool"><code>bool</code></a></td>
 </tr>
 <tr>
 <td><code>f4</code></td>
-<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#bytes"><code>bytes</code></a></td>
+<td><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#bytes"><code>bytes</code></a></td>
 </tr>
 <tr>
 <td><code>f5</code></td>
@@ -4112,7 +4155,6 @@ following logic is applied:</p>
 </table>
 <h3 id="limitations-and-backwards-compatibility-concerns">Limitations and backwards compatibility concerns<a class="headerlink" href="#limitations-and-backwards-compatibility-concerns" title="Permanent link">&para;</a></h3>
 <p>While the namespace fetching logic is trying to be as accurate as possible, we still face some limitations:</p>
-<div class="annotate">
 <ul>
 <li>The locals of the current class (<code>cls.__dict__</code>) may include irrelevant entries, most of them being dunder attributes.
   This means that the following annotation: <code>f: '__doc__'</code> will successfully (and unexpectedly) be resolved.</li>
@@ -4120,32 +4162,12 @@ following logic is applied:</p>
   This copy only includes the symbols defined in the locals when <code>Model</code> is being defined, meaning <code>InnerType2</code> won't be included
   (and will <strong>not be</strong> if doing a model rebuild at a later point!).<ul>
 <li>To avoid memory leaks, we use <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/weakref.html#module-weakref">weak references</a> to the locals of the function, meaning some forward references might
-not resolve outside the function (1).</li>
+not resolve outside the function<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</li>
 <li>Locals of the function are only taken into account for Pydantic models, but this pattern does not apply to dataclasses, typed
 dictionaries or named tuples.</li>
 </ul>
 </li>
 </ul>
-</div>
-<ol>
-<li>
-<p>Here is an example:</p>
-<div class="language-python highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">():</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="nb">int</span>
-
-    <span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-        <span class="n">f</span><span class="p">:</span> <span class="s1">&#39;A | Forward&#39;</span>
-
-    <span class="k">return</span> <span class="n">Model</span>
-
-
-<span class="n">Model</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
-
-<span class="n">Model</span><span class="o">.</span><span class="n">model_rebuild</span><span class="p">(</span><span class="n">_types_namespace</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Forward&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
-<span class="c1"># pydantic.errors.PydanticUndefinedAnnotation: name &#39;A&#39; is not defined</span>
-</code></pre></div>
-</li>
-</ol>
 <p id="backwards-compatibility-logic">For backwards compatibility reasons, and to be able to support valid use cases without having to rebuild models,
 the namespace logic described above is a bit different when it comes to core schema generation.
 Taking the following example:</p>
@@ -4231,6 +4253,23 @@ generation process. This can be seen by inspecting the <code>__pydantic_core_sch
 <p>This is done unconditionally, as forward annotations can be only present <em>as part</em> of a type hint (e.g. <code>Optional['int']</code>), as dictated by
   the <a href="https://typing.readthedocs.io/en/latest/spec/annotations.html#string-annotations">typing specification</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
+<li id="fn:2">
+<p>Here is an example:</p>
+<p><div class="language-python highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">():</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">:</span> <span class="s1">&#39;A | Forward&#39;</span>
+
+    <span class="k">return</span> <span class="n">Model</span>
+
+
+<span class="n">Model</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
+
+<span class="n">Model</span><span class="o">.</span><span class="n">model_rebuild</span><span class="p">(</span><span class="n">_types_namespace</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Forward&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<span class="c1"># pydantic.errors.PydanticUndefinedAnnotation: name &#39;A&#39; is not defined</span>
+</code></pre></div>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
 </ol>
 </div>
 
@@ -4300,7 +4339,7 @@ generation process. This can be seen by inspecting the <code>__pydantic_core_sch
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -4352,7 +4391,7 @@ generation process. This can be seen by inspecting the <code>__pydantic_core_sch
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

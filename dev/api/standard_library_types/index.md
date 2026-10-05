@@ -217,9 +217,41 @@ Standard library type: decimal.Decimal.
 
 Decimals support the following constraints (numbers must be coercible to decimals):
 
-| Constraint | Description | JSON Schema | | --- | --- | --- | | `le` | The value must be less than or equal to this number | [`maximum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `ge` | The value must be greater than or equal to this number | [`minimum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `lt` | The value must be strictly less than this number | [`exclusiveMaximum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `gt` | The value must be strictly greater than this number | [`exclusiveMinimum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `multiple_of` | The value must be a multiple of this number | [`multipleOf`](https://json-schema.org/understanding-json-schema/reference/numeric#multiples) keyword | | `allow_inf_nan` | Whether to allow NaN (not-a-number) and infinite values | N/A | | `max_digits` | The maximum number of decimal digits allowed. The zero before the decimal point and trailing zeros are not counted. | [`pattern`](https://json-schema.org/understanding-json-schema/reference/string#regexp) keyword, to describe the string pattern | | `decimal_places` | The maximum number of decimal places allowed. Trailing zeros are not counted. | [`pattern`](https://json-schema.org/understanding-json-schema/reference/string#regexp) keyword, to describe the string pattern |
+| Constraint | Description | JSON Schema | | --- | --- | --- | | `le` | The value must be less than or equal to this number | [`maximum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `ge` | The value must be greater than or equal to this number | [`minimum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `lt` | The value must be strictly less than this number | [`exclusiveMaximum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `gt` | The value must be strictly greater than this number | [`exclusiveMinimum`](https://json-schema.org/understanding-json-schema/reference/numeric#range) keyword | | `multiple_of` | The value must be a multiple of this number | [`multipleOf`](https://json-schema.org/understanding-json-schema/reference/numeric#multiples) keyword | | `allow_inf_nan` | Whether to allow NaN (not-a-number) and infinite values | N/A | | `max_digits` | The maximum number of decimal digits allowed. The zero before the decimal point and trailing zeros are not counted. | N/A (see below) | | `decimal_places` | The maximum number of decimal places allowed. Trailing zeros are not counted. | N/A (see below) |
 
-Note that the JSON Schema [`pattern`](https://json-schema.org/understanding-json-schema/reference/string#regexp) keyword will be specified in the JSON Schema to describe the string pattern in all cases (and can vary if `max_digits` and/or `decimal_places` is specified).
+Changed in v2.12: The JSON Schema includes a [`pattern`](https://json-schema.org/understanding-json-schema/reference/string#regexp) matching the `max_digits` and `decimal_places` constraints.
+
+Changed in v2.14: The JSON Schema no longer includes a [`pattern`](https://json-schema.org/understanding-json-schema/reference/string#regexp) by default, as the generated pattern can cause issues for downstream consumers due to its complexity.
+
+```python
+from decimal import Decimal
+from typing import Annotated
+
+from pydantic import Field, TypeAdapter
+from pydantic.json_schema import GenerateJsonSchema
+
+
+class MyGenerateJsonSchema(GenerateJsonSchema):
+    def get_decimal_pattern(self, schema):
+        return self.build_decimal_pattern(schema)
+
+
+ta = TypeAdapter(Annotated[Decimal, Field(max_digits=5, decimal_places=2)])
+print(
+    ta.json_schema(schema_generator=MyGenerateJsonSchema, mode='serialization')
+)
+"""
+{
+    'pattern': '^-?(?:(?:0|[1-9][0-9]{0,2})(?:\\.[0-9]{1,2}0*)?|0E[+-][1-9][0-9]*|[1-9](?:\\.[0-9]+)?E\\+[1-2])$',
+    'type': 'string',
+}
+"""
+
+```
+
+The generated pattern also no longer uses lookahead assertions, and takes exponents and `allow_inf_nan` into account.
+
+The pattern can be included by subclassing GenerateJsonSchema and overriding the get_decimal_pattern() method:
 
 These constraints can be provided using the Field() function. The `Le`, `Ge`, `Lt`, `Gt` and `MultipleOf` metadata types from the [`annotated-types`](https://github.com/annotated-types/annotated-types) library and the AllowInfNan type can also be used.
 
@@ -770,7 +802,7 @@ Standard library type: collections.deque (deprecated alias: typing.Deque).
 
 #### Validation
 
-Values are first validated as a [list](#lists), and then passed to the deque constructor.
+Any iterable (except strings, bytes and mappings) is accepted and converted to a deque, with each item validated against the parameter type. If the input is already a `deque` instance, its maxlen attribute is preserved.
 
 #### Constraints
 
@@ -876,7 +908,7 @@ Built-in type: dict.
 
 Dictionaries support the following constraints:
 
-| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The dictionary must have at least this many items | [`minItems`](https://json-schema.org/understanding-json-schema/reference/array#length) keyword | | `max_length` | The dictionary must have at most this many items | [`maxItems`](https://json-schema.org/understanding-json-schema/reference/array#length) keyword |
+| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The dictionary must have at least this many items | [`minProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword | | `max_length` | The dictionary must have at most this many items | [`maxProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword |
 
 These constraints can be provided using the Field() function. The `MinLen` and `MaxLen` metadata types from the [`annotated-types`](https://github.com/annotated-types/annotated-types) library can also be used.
 
@@ -926,7 +958,7 @@ Added in v2.14: The `frozendict` type, new in Python 3.15, is supported by Pydan
 
 As with [dictionaries](#dictionaries), frozen dictionaries support the following constraints:
 
-| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The dictionary must have at least this many items | [`minItems`](https://json-schema.org/understanding-json-schema/reference/array#length) keyword | | `max_length` | The dictionary must have at most this many items | [`maxItems`](https://json-schema.org/understanding-json-schema/reference/array#length) keyword |
+| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The dictionary must have at least this many items | [`minProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword | | `max_length` | The dictionary must have at most this many items | [`maxProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword |
 
 These constraints can be provided using the Field() function. The `MinLen` and `MaxLen` metadata types from the [`annotated-types`](https://github.com/annotated-types/annotated-types) library can also be used.
 
@@ -935,6 +967,106 @@ These constraints can be provided using the Field() function. The `MinLen` and `
 In [strict mode](../../concepts/strict_mode/), only `frozendict` instances are valid. Strict mode does *not* apply to the keys and values of the frozen dictionaries. The strict constraint must be applied to the parameter types for this to work.
 
 #### Example
+
+### Ordered dictionaries
+
+Standard library type: collections.OrderedDict (deprecated alias: typing.OrderedDict).
+
+#### Validation
+
+- OrderedDict instances are accepted as is.
+- dict and mappings instances are accepted and coerced to an OrderedDict.
+- If generic parameters for keys and values are provided, the appropriate validation is applied.
+
+#### Constraints
+
+As with [dictionaries](#dictionaries), ordered dictionaries support the following constraints:
+
+| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The dictionary must have at least this many items | [`minProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword | | `max_length` | The dictionary must have at most this many items | [`maxProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword |
+
+These constraints can be provided using the Field() function. The `MinLen` and `MaxLen` metadata types from the [`annotated-types`](https://github.com/annotated-types/annotated-types) library can also be used.
+
+#### Strictness
+
+In [strict mode](../../concepts/strict_mode/), only OrderedDict instances are valid. Strict mode does *not* apply to the keys and values of the ordered dictionaries. The strict constraint must be applied to the parameter types for this to work.
+
+#### Example
+
+```python
+from collections import OrderedDict
+
+from pydantic import BaseModel, ValidationError
+
+
+class Model(BaseModel):
+    x: OrderedDict[str, int]
+
+
+m = Model(x={'foo': 1})
+print(m.model_dump())
+#> {'x': OrderedDict({'foo': 1})}
+
+try:
+    Model(x='test')
+except ValidationError as e:
+    print(e)
+    """
+    1 validation error for Model
+    x
+      Input should be a valid OrderedDict [type=ordered_dict_type, input_value='test', input_type=str]
+    """
+
+```
+
+### Counters
+
+Standard library type: collections.Counter (deprecated alias: typing.Counter).
+
+#### Validation
+
+- Counter instances are accepted as is.
+- dict and mappings instances are accepted and coerced to a Counter.
+- If a generic parameter for keys is provided, the appropriate validation is applied. Values are always validated as [integers](#integers).
+
+#### Constraints
+
+As with [dictionaries](#dictionaries), counters support the following constraints:
+
+| Constraint | Description | JSON Schema | | --- | --- | --- | | `min_length` | The counter must have at least this many items | [`minProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword | | `max_length` | The counter must have at most this many items | [`maxProperties`](https://json-schema.org/understanding-json-schema/reference/object#size) keyword |
+
+These constraints can be provided using the Field() function. The `MinLen` and `MaxLen` metadata types from the [`annotated-types`](https://github.com/annotated-types/annotated-types) library can also be used.
+
+#### Strictness
+
+In [strict mode](../../concepts/strict_mode/), only Counter instances are valid. Strict mode does *not* apply to the keys and values of the counters. The strict constraint must be applied to the parameter types for this to work.
+
+#### Example
+
+```python
+from collections import Counter
+
+from pydantic import BaseModel, ValidationError
+
+
+class Model(BaseModel):
+    x: Counter[str]
+
+
+m = Model(x={'foo': '1'})
+print(m.model_dump())
+#> {'x': Counter({'foo': 1})}
+
+try:
+    Model(x='test')
+except ValidationError as e:
+    print(e)
+    """
+    1 validation error for Model
+    x
+      Input should be a valid Counter [type=counter_type, input_value='test', input_type=str]
+    """
+
+```
 
 ### Typed dictionaries
 
@@ -1094,7 +1226,7 @@ See also: the IPvAnyAddress, IPvAnyInterface and IPvAnyNetwork Pydantic types.
 
 ### Strictness
 
-In [strict mode](../../concepts/strict_mode/), only the address types are accepted. In JSON mode, strict mode has no effect.
+In [strict mode](../../concepts/strict_mode/), only the address types are accepted. In JSON mode, only strings are accepted in strict mode, while integers are also accepted in lax mode (e.g. `3232235521` is validated as `IPv4Address('192.168.0.1')`).
 
 ### Serialization
 
@@ -1268,7 +1400,7 @@ Standard library type: re.Pattern (deprecated alias: typing.Pattern).
 
 In [Python mode](../../concepts/serialization/#python-mode), Pattern instances are serialized as is.
 
-In [JSON mode](../../concepts/serialization/#json-mode), they are serialized as strings.
+In [JSON mode](../../concepts/serialization/#json-mode), they are serialized as strings (note that flags are currently *not* preserved).
 
 ## Paths
 

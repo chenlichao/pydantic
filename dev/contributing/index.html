@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Contributing - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/contributing.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/contributing/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Contributing - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/contributing.png" />
-</head>
+  </head>
   
   
     
@@ -636,6 +623,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -3254,6 +3269,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4422,6 +4465,9 @@ make
 <span class="c1"># which you might want to use, but generally just `make` should be all you need.</span>
 <span class="c1"># You can run `make help` to see more options.</span>
 </code></pre></div>
+<p>The <code>pydantic-core</code> test suite is located in <code>tests/pydantic-core</code>, as a symlink. For it to work, you may need to
+enable the <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-coresymlinks"><code>core.symlinks</code></a> Git
+option.</p>
 <h3 id="build-documentation">Build documentation<a class="headerlink" href="#build-documentation" title="Permanent link">&para;</a></h3>
 <p>If you've made any changes to the documentation (including changes to function signatures, class definitions, or docstrings that will appear in the API documentation), make sure it builds successfully.</p>
 <p>We use <code>mkdocs-material[imaging]</code> to support social previews (see the <a href="https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/">plugin documentation</a>).</p>
@@ -4486,7 +4532,7 @@ For example, if the latest release is <code>v2.9.2</code>, you should make sure 
 
     <span class="k">return</span> <span class="s1">&#39;bar&#39;</span>
 </code></pre></div>
-<p>You may include example code in docstrings. This code should be complete, self-contained, and runnable. Docstring examples are tested, so make sure they are correct and complete. See <a class="autorefs autorefs-internal" href="../api/functional_validators/#pydantic.functional_validators.AfterValidator"><code>BeforeValidator</code></a> for an example.</p>
+<p>You may include example code in docstrings. This code should be complete, self-contained, and runnable. Docstring examples are tested, so make sure they are correct and complete. See <a class="autorefs autorefs-internal" href="../api/functional_validators/#pydantic.functional_validators.AfterValidator"><code>AfterValidator</code></a> for an example.</p>
 <div class="admonition note">
 <p class="admonition-title">Class and instance attributes</p>
 <p>Class attributes should be documented in the class docstring.</p>
@@ -4608,7 +4654,7 @@ to discuss the inclusion of your project.</p>
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -4660,7 +4706,7 @@ to discuss the inclusion of your project.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

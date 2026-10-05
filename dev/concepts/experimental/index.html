@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -67,20 +67,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Experimental - Pydantic Validation" />
-<meta property="og:description" content="Data validation using Python type hints" />
-<meta property="og:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/experimental.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://docs.pydantic.dev/latest/concepts/experimental/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Experimental - Pydantic Validation" />
-<meta property="twitter:description" content="Data validation using Python type hints" />
-<meta property="twitter:image" content="https://docs.pydantic.dev/latest/assets/images/social/concepts/experimental.png" />
-</head>
+  </head>
   
   
     
@@ -631,6 +618,34 @@ to help you monitor and understand your
     
   
     Help with Pydantic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Support
   
 
     
@@ -1592,17 +1607,6 @@ to help you monitor and understand your
     <span class="md-ellipsis">
       
         Validation of a callable's arguments
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-sentinel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MISSING sentinel
       
     </span>
   </a>
@@ -3214,6 +3218,34 @@ to help you monitor and understand your
   
   
     <li class="md-nav__item">
+      <a href="../../examples/cyclic_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic references
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/pydantic_ai/" class="md-nav__link">
         
   
@@ -4216,17 +4248,6 @@ to help you monitor and understand your
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#missing-sentinel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MISSING sentinel
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4549,7 +4570,7 @@ For example, if you're validating against the following model:</p>
 <span class="n">ta</span> <span class="o">=</span> <span class="n">TypeAdapter</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">ta</span><span class="o">.</span><span class="n">validate_json</span><span class="p">(</span>
-        <span class="s1">&#39;{&quot;a&quot;: 1, &quot;b&quot;: [&quot;12345&quot;, &quot;12&#39;</span><span class="p">,</span> <span class="n">experimental_allow_partial</span><span class="o">=</span><span class="kc">True</span>
+        <span class="s1">&#39;{&quot;a&quot;: 1, &quot;b&quot;: [&quot;12345&quot;, &quot;12&quot;&#39;</span><span class="p">,</span> <span class="n">experimental_allow_partial</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
@@ -4727,49 +4748,6 @@ the underlying callable will <em>not</em> be called.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
 <span class="c1">#&gt; (&#39;arg1&#39;,) {&#39;extra&#39;: 1}</span>
 </code></pre></div>
-<h2 id="missing-sentinel"><code>MISSING</code> sentinel<a class="headerlink" href="#missing-sentinel" title="Permanent link">&para;</a></h2>
-<p>The <code>MISSING</code> sentinel is a singleton indicating a field value was not provided during validation.</p>
-<p>This singleton can be used as a default value, as an alternative to <code>None</code> when it has an explicit
-meaning. During serialization, any field with <code>MISSING</code> as a value is excluded from the output.</p>
-<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic.experimental.missing_sentinel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MISSING</span>
-
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Configuration</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">MISSING</span> <span class="o">=</span> <span class="n">MISSING</span>
-
-
-<span class="c1"># configuration defaults, stored somewhere else:</span>
-<span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
-
-<span class="n">conf</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
-
-<span class="c1"># `timeout` is excluded from the serialization output:</span>
-<span class="n">conf</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
-<span class="c1"># {}</span>
-
-<span class="c1"># The `MISSING` value doesn&#39;t appear in the JSON Schema:</span>
-<span class="n">Configuration</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">()[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;timeout&#39;</span><span class="p">]</span>
-<span class="c1">#&gt; {&#39;anyOf&#39;: [{&#39;type&#39;: &#39;integer&#39;}, {&#39;type&#39;: &#39;null&#39;}], &#39;title&#39;: &#39;Timeout&#39;}}</span>
-
-
-<span class="c1"># `is` can be used to discriminate between the sentinel and other values:</span>
-<span class="n">timeout</span> <span class="o">=</span> <span class="n">conf</span><span class="o">.</span><span class="n">timeout</span> <span class="k">if</span> <span class="n">conf</span><span class="o">.</span><span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">MISSING</span> <span class="k">else</span> <span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">]</span>
-</code></pre></div>
-<p>This feature is marked as experimental because it relies on the draft <a href="https://peps.python.org/pep-0661/">PEP 661</a>, introducing sentinels in the standard library.</p>
-<p>As such, the following limitations currently apply:</p>
-<ul>
-<li>Static type checking of sentinels is only supported with Pyright
-  <a href="https://github.com/microsoft/pyright/releases/tag/1.1.402">1.1.402</a>
-  or greater, and the <code>enableExperimentalFeatures</code> type evaluation setting
-  should be enabled.</li>
-<li>Pickling of models containing <code>MISSING</code> as a value is not supported.</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When <a href="../fields/#field-constraints">applying constraints</a> to a union containing the <code>MISSING</code> sentinel,
-such constraints are automatically applied to the remaining type(s) of the union.</p>
-</div>
 
 
 
@@ -4837,7 +4815,7 @@ such constraints are automatically applied to the remaining type(s) of the union
                 
   <script src="/flarelytics/client.js"></script>
       <script>
-    window.mkdocs_run_deps = ["pydantic==2.14.0b1", "email-validator>=2.0.0", "pydantic-core==2.48.0", "pydantic-extra-types==2.10.6"]
+    window.mkdocs_run_deps = ["pydantic==2.14.0b2", "email-validator>=2.0.0", "pydantic-core==2.49.0", "pydantic-extra-types==2.10.6"]
     </script>
 
               </article>
@@ -4889,7 +4867,7 @@ such constraints are automatically applied to the remaining type(s) of the union
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.preview", "navigation.instant.progress", "navigation.path", "navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.20.0/dist/lite/builds/browser.umd.js"></script>
       

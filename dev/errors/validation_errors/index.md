@@ -236,10 +236,32 @@ class Model(BaseModel):
 
 
 try:
-    Model(num=False)
+    Model(num='not a complex number')
 except ValidationError as exc:
     print(repr(exc.errors()[0]['type']))
     #> 'complex_type'
+
+```
+
+## `counter_type`
+
+This error is raised when the input value's type is not valid for a Counter field:
+
+```python
+from collections import Counter
+
+from pydantic import BaseModel, ValidationError
+
+
+class Model(BaseModel):
+    x: Counter[str]
+
+
+try:
+    Model(x='test')
+except ValidationError as exc:
+    print(repr(exc.errors()[0]['type']))
+    #> 'counter_type'
 
 ```
 
@@ -719,6 +741,28 @@ except ValidationError as exc:
     """
     print(repr(exc.errors()[1]['type']))
     #> 'default_factory_not_called'
+
+```
+
+## `deque_type`
+
+This error is raised when the input value's type is not valid for a deque field:
+
+```python
+from collections import deque
+
+from pydantic import BaseModel, ValidationError
+
+
+class Model(BaseModel):
+    x: deque[int]
+
+
+try:
+    Model(x=1)
+except ValidationError as exc:
+    print(repr(exc.errors()[0]['type']))
+    #> 'deque_type'
 
 ```
 
@@ -1529,11 +1573,10 @@ except ValidationError as exc:
 
 ## `missing_sentinel_error`
 
-This error is raised when the experimental `MISSING` sentinel is the only value allowed, and wasn't provided during validation:
+This error is raised when the `MISSING` sentinel is the only value allowed, and wasn't provided during validation:
 
 ```python
-from pydantic import BaseModel, ValidationError
-from pydantic.experimental.missing_sentinel import MISSING
+from pydantic import MISSING, BaseModel, ValidationError
 
 
 class Model(BaseModel):
@@ -1764,6 +1807,28 @@ m = M1(int=123)  # errors
 
 ```
 
+## `ordered_dict_type`
+
+This error is raised when the input value's type is not valid for an OrderedDict field:
+
+```python
+from collections import OrderedDict
+
+from pydantic import BaseModel, ValidationError
+
+
+class Model(BaseModel):
+    x: OrderedDict[str, int]
+
+
+try:
+    Model(x='test')
+except ValidationError as exc:
+    print(repr(exc.errors()[0]['type']))
+    #> 'ordered_dict_type'
+
+```
+
 ## `recursion_loop`
 
 This error is raised when a cyclic reference is detected:
@@ -1871,32 +1936,6 @@ try:
 except ValidationError as exc:
     print(repr(exc.errors()[0]['type']))
     #> 'string_pattern_mismatch'
-
-```
-
-## `string_sub_type`
-
-This error is raised when the value is an instance of a strict subtype of `str` when the field is strict:
-
-```python
-from enum import Enum
-
-from pydantic import BaseModel, Field, ValidationError
-
-
-class MyEnum(str, Enum):
-    foo = 'foo'
-
-
-class Model(BaseModel):
-    x: str = Field(strict=True)
-
-
-try:
-    Model(x=MyEnum.foo)
-except ValidationError as exc:
-    print(repr(exc.errors()[0]['type']))
-    #> 'string_sub_type'
 
 ```
 
